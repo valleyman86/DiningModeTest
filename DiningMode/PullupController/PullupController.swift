@@ -114,7 +114,23 @@ class PullupController: UIViewController {
         let translation = gestureRecognizer.translation(in: view)
         contentViewHeightConstraint.constant -= translation.y
         gestureRecognizer.setTranslation(CGPoint.zero, in: view)
-//        NSLog("translation: %f", translation.y)
+        
+        
+        if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
+            if (contentViewHeightConstraint.constant > view.frame.height * 0.5) {
+                contentViewHeightConstraint.constant = view.frame.height
+            } else {
+                if let toolbarVC = toolbarViewController {
+                    contentViewHeightConstraint.constant = toolbarVC.view.frame.height
+                } else {
+                    contentViewHeightConstraint.constant = 0;
+                }
+            }
+            
+            UIView.animate(withDuration: 0.1) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     /*
