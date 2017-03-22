@@ -23,13 +23,6 @@ class PullupController: UIViewController {
         }
     }
     
-    public var mainViewController: UIViewController? {
-        didSet {
-            removeViewController(viewController: oldValue)
-            addMainViewController(viewController: mainViewController!)
-        }
-    }
-    
     public var pullupViewController: UIViewController? {
         didSet {
             removeViewController(viewController: oldValue)
@@ -67,9 +60,9 @@ class PullupController: UIViewController {
 //        let segueTemplates = self.value(forKey: "storyboardSegueTemplates") as! NSArray
 //        let segueId = segueTemplates.firstObject.value(forKey: "identifier")
         
-        performSegue(withIdentifier: "idMainSegue", sender: self)
-        performSegue(withIdentifier: "idPullupSegue", sender: self)
         performSegue(withIdentifier: "idToolbarSegue", sender: self)
+        performSegue(withIdentifier: "idPullupSegue", sender: self)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,28 +86,6 @@ class PullupController: UIViewController {
         }
     }
     
-    private func addMainViewController(viewController : UIViewController?) {
-        if let newVC = viewController {
-            // notify and add new viewcontroller to container
-            addChildViewController(newVC)
-            newVC.view.frame = view.bounds
-            view.addSubview(newVC.view)
-            newVC.didMove(toParentViewController: self)
-        }
-    }
-    
-    private func addPullupViewController(viewController : UIViewController?) {
-        if let pullupVC = viewController {
-            // notify and add new viewcontroller to container
-            addChildViewController(pullupVC)
-            pullupVC.view.frame = view.bounds
-            contentView.addSubview(pullupVC.view)
-            pullupVC.didMove(toParentViewController: self)
-            
-            updatePullupConstraints()
-        }
-    }
-    
     private func addToolbarViewController(viewController : UIViewController?) {
         if let toolbarVC = viewController {
             // notify and add new viewcontroller to container
@@ -134,6 +105,18 @@ class PullupController: UIViewController {
             
             // We want the pullup always on top
             view.bringSubview(toFront: contentView)
+            
+            updatePullupConstraints()
+        }
+    }
+    
+    private func addPullupViewController(viewController : UIViewController?) {
+        if let pullupVC = viewController {
+            // notify and add new viewcontroller to container
+            addChildViewController(pullupVC)
+            pullupVC.view.frame = view.bounds
+            contentView.addSubview(pullupVC.view)
+            pullupVC.didMove(toParentViewController: self)
             
             updatePullupConstraints()
         }
