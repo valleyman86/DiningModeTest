@@ -21,6 +21,7 @@
 		009573361DF23288003412B9 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 009573331DF2327D003412B9 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EE09721DF24D160096F568 /* PartialReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09711DF24D160096F568 /* PartialReservation.json */; };
 		00EE09741DF24D520096F568 /* FullReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09731DF24D520096F568 /* FullReservation.json */; };
+		D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */; };
 		D4C31CF91E8089C20045E613 /* PullupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CF81E8089C20045E613 /* PullupController.swift */; };
 		D4C31CFB1E80973B0045E613 /* PullupMainViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CFA1E80973B0045E613 /* PullupMainViewRelationshipSegue.swift */; };
 		D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */; };
@@ -77,6 +78,7 @@
 		009573331DF2327D003412B9 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		00EE09711DF24D160096F568 /* PartialReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialReservation.json; sourceTree = "<group>"; };
 		00EE09731DF24D520096F568 /* FullReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FullReservation.json; sourceTree = "<group>"; };
+		D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupViewRelationshipSegue.swift; path = PullupController/PullupViewRelationshipSegue.swift; sourceTree = "<group>"; };
 		D4C31CF81E8089C20045E613 /* PullupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupController.swift; path = PullupController/PullupController.swift; sourceTree = "<group>"; };
 		D4C31CFA1E80973B0045E613 /* PullupMainViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupMainViewRelationshipSegue.swift; path = PullupController/PullupMainViewRelationshipSegue.swift; sourceTree = "<group>"; };
 		D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupToolbarViewRelationshipSegue.swift; path = PullupController/PullupToolbarViewRelationshipSegue.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				D4C31CF81E8089C20045E613 /* PullupController.swift */,
 				D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */,
 				D4C31CFA1E80973B0045E613 /* PullupMainViewRelationshipSegue.swift */,
+				D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */,
 			);
 			name = PullupController;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */,
 				009572FC1DF2210E003412B9 /* AppDelegate.swift in Sources */,
 				D4C31CF91E8089C20045E613 /* PullupController.swift in Sources */,
+				D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */,
 				0095732B1DF22154003412B9 /* Reservation.swift in Sources */,
 				0095732F1DF2252F003412B9 /* ReservationAssembler.swift in Sources */,
 				D4C31CFB1E80973B0045E613 /* PullupMainViewRelationshipSegue.swift in Sources */,

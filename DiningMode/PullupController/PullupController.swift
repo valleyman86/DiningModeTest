@@ -11,6 +11,8 @@ import UIKit
 
 class PullupController: UIViewController {
 
+    // MARK: - Properties
+    
     private var contentView: UIView!
     private var contentViewHeightConstraint: NSLayoutConstraint!
 
@@ -28,12 +30,19 @@ class PullupController: UIViewController {
         }
     }
     
-    public var secondViewController: UIViewController?
+    public var pullupViewController: UIViewController? {
+        didSet {
+            removeViewController(viewController: oldValue)
+            addPullupViewController(viewController: pullupViewController!)
+        }
+    }
+    
+    // MARK: - View States
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // setup the content view used for the popup
+        // setup the content view used for the pullup
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
         contentView.isUserInteractionEnabled = true
@@ -47,13 +56,19 @@ class PullupController: UIViewController {
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
         contentViewHeightConstraint.isActive = true;
 
-        // we use a gesture to drag the popup
+        // we use a gesture to drag the pullup
+    
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
         contentView.addGestureRecognizer(panGestureRecognizer)
         
         // load the view controllers from the storyboard if there are any
         // TODO: Figure out a better way for this that is less error prone and can support not using a storyboard...
+        
+//        let segueTemplates = self.value(forKey: "storyboardSegueTemplates") as! NSArray
+//        let segueId = segueTemplates.firstObject.value(forKey: "identifier")
+        
         performSegue(withIdentifier: "idMainSegue", sender: self)
+        performSegue(withIdentifier: "idPullupSegue", sender: self)
         performSegue(withIdentifier: "idToolbarSegue", sender: self)
     }
     
@@ -66,6 +81,8 @@ class PullupController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Manage ViewVontrollers
     
     private func removeViewController(viewController : UIViewController?) {
         if let oldVC = viewController {
@@ -86,39 +103,70 @@ class PullupController: UIViewController {
         }
     }
     
-    private func addToolbarViewController(viewController : UIViewController?) {
-        if let newVC = viewController {
+    private func addPullupViewController(viewController : UIViewController?) {
+        if let pullupVC = viewController {
             // notify and add new viewcontroller to container
-            addChildViewController(newVC)
-            contentView.addSubview(newVC.view)
-            newVC.didMove(toParentViewController: self)
+            addChildViewController(pullupVC)
+            pullupVC.view.frame = view.bounds
+            contentView.addSubview(pullupVC.view)
+            pullupVC.didMove(toParentViewController: self)
             
-            // create contraints to make the toolbar snap the bottom of the layout
-            newVC.view.translatesAutoresizingMaskIntoConstraints = false
-            newVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-            newVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-            newVC.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-            newVC.view.heightAnchor.constraint(equalToConstant: newVC.view.frame.height).isActive = true
-            
-            // Update the contentView to fit the height of this toolbar
-            contentViewHeightConstraint.constant = newVC.view.frame.height
-            
-            // We want the popup always on top
-            view.bringSubview(toFront: contentView)
+            updatePullupConstraints()
         }
     }
     
+    private func addToolbarViewController(viewController : UIViewController?) {
+        if let toolbarVC = viewController {
+            // notify and add new viewcontroller to container
+            addChildViewController(toolbarVC)
+            contentView.addSubview(toolbarVC.view)
+            toolbarVC.didMove(toParentViewController: self)
+            
+            // create contraints to make the toolbar snap the bottom of the layout
+            toolbarVC.view.translatesAutoresizingMaskIntoConstraints = false
+            toolbarVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+            toolbarVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+            toolbarVC.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+            toolbarVC.view.heightAnchor.constraint(equalToConstant: toolbarVC.view.frame.height).isActive = true
+            
+            // Update the contentView to fit the height of this toolbar
+            contentViewHeightConstraint.constant = toolbarVC.view.frame.height
+            
+            // We want the pullup always on top
+            view.bringSubview(toFront: contentView)
+            
+            updatePullupConstraints()
+        }
+    }
+    
+    private func updatePullupConstraints() {
+        if let pullupVC = pullupViewController, let toolbarVC = toolbarViewController {
+            pullupVC.view.translatesAutoresizingMaskIntoConstraints = false
+            pullupVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+            pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+            pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
+            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            //pullupVC.view.heightAnchor.constraint(equalToConstant: pullupVC.view.frame.height).isActive = true
+        }
+    }
+    
+    // MARK: - Interactions
     
     @objc private func toolbarDragGesture(gestureRecognizer: UIPanGestureRecognizer) {
-        // we offset the popup based on our drag.
+        // we offset the pullup based on our drag.
         let translation = gestureRecognizer.translation(in: view)
         contentViewHeightConstraint.constant -= translation.y
         gestureRecognizer.setTranslation(CGPoint.zero, in: view)
         
         
+        // provide snapping animations when the view is let go based on a threshold
         if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
             if (contentViewHeightConstraint.constant > view.frame.height * 0.5) {
-                contentViewHeightConstraint.constant = view.frame.height
+                 if let toolbarVC = toolbarViewController {
+                    contentViewHeightConstraint.constant = view.frame.height + toolbarVC.view.frame.height
+                 } else {
+                    contentViewHeightConstraint.constant = view.frame.height
+                }
             } else {
                 if let toolbarVC = toolbarViewController {
                     contentViewHeightConstraint.constant = toolbarVC.view.frame.height
@@ -132,15 +180,4 @@ class PullupController: UIViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
