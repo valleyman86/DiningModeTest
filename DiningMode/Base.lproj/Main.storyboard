@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="-354" y="-503"/>
         </scene>
-        <!--Pullup Bar View Controller-->
+        <!--Reservation Toolbar View Controller-->
         <scene sceneID="7df-W6-gyy">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" id="goM-ac-FRB" customClass="PullupBarViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="goM-ac-FRB" customClass="ReservationToolbarViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zjs-Hq-huh"/>
                         <viewControllerLayoutGuide type="bottom" id="18b-d1-Mki"/>
@@ -265,7 +265,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="afS-7O-NLH">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="YSV-9h-LHk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="YSV-9h-LHk">
                             <color key="tintColor" red="0.74042665155440412" green="0.13026698023861955" blue="0.15429687244969395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapCloseButton:" destination="sye-YV-0Tj" id="b1p-ru-OIA"/>

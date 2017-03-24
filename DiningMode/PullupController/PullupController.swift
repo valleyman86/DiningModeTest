@@ -165,6 +165,9 @@ class PullupController: UIViewController {
             self.contentViewHeightConstraint.constant = 0;
         }
         
+        //TODO: Toolbar hiding
+        //self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
+        
         if (flag) {
             UIView.animate(withDuration: 0.4) {
                 self.view.layoutIfNeeded()
@@ -181,6 +184,9 @@ class PullupController: UIViewController {
         } else {
             contentViewHeightConstraint.constant = view.frame.height
         }
+        
+        //TODO: Toolbar hiding
+        //self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + (self.tabBarController?.tabBar.frame.height)!
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {

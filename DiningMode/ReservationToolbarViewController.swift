@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PullupBarViewController: UIViewController {
+class ReservationToolbarViewController: UIViewController {
 
-    private var viewModel: PullupBarViewModel!
+    private var viewModel: ReservationToolbarViewModel!
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -18,7 +18,7 @@ class PullupBarViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.viewModel = PullupBarViewModel()
+        self.viewModel = ReservationToolbarViewModel()
         
         self.loadData()
     }

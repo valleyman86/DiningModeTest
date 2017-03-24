@@ -20,8 +20,8 @@
 		009573361DF23288003412B9 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 009573331DF2327D003412B9 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EE09721DF24D160096F568 /* PartialReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09711DF24D160096F568 /* PartialReservation.json */; };
 		00EE09741DF24D520096F568 /* FullReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09731DF24D520096F568 /* FullReservation.json */; };
-		D44BD4E41E85DD6D00409130 /* PullupBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44BD4E31E85DD6D00409130 /* PullupBarViewController.swift */; };
-		D44BD4E61E85DDAA00409130 /* PullupBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44BD4E51E85DDAA00409130 /* PullupBarViewModel.swift */; };
+		D44BD4E41E85DD6D00409130 /* ReservationToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44BD4E31E85DD6D00409130 /* ReservationToolbarViewController.swift */; };
+		D44BD4E61E85DDAA00409130 /* ReservationToolbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44BD4E51E85DDAA00409130 /* ReservationToolbarViewModel.swift */; };
 		D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */; };
 		D45F3E381E8493D8006E5774 /* ReservationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */; };
 		D45F3E3F1E849944006E5774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F3E3D1E849944006E5774 /* Main.storyboard */; };
@@ -88,8 +88,8 @@
 		009573331DF2327D003412B9 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		00EE09711DF24D160096F568 /* PartialReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialReservation.json; sourceTree = "<group>"; };
 		00EE09731DF24D520096F568 /* FullReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FullReservation.json; sourceTree = "<group>"; };
-		D44BD4E31E85DD6D00409130 /* PullupBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullupBarViewController.swift; sourceTree = "<group>"; };
-		D44BD4E51E85DDAA00409130 /* PullupBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullupBarViewModel.swift; sourceTree = "<group>"; };
+		D44BD4E31E85DD6D00409130 /* ReservationToolbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationToolbarViewController.swift; sourceTree = "<group>"; };
+		D44BD4E51E85DDAA00409130 /* ReservationToolbarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationToolbarViewModel.swift; sourceTree = "<group>"; };
 		D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupViewRelationshipSegue.swift; path = PullupController/PullupViewRelationshipSegue.swift; sourceTree = "<group>"; };
 		D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationTableViewController.swift; sourceTree = "<group>"; };
 		D45F3E3E1E849944006E5774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 				009573291DF22145003412B9 /* Vendor */,
 				009572FB1DF2210E003412B9 /* AppDelegate.swift */,
 				009572FD1DF2210E003412B9 /* ViewController.swift */,
-				D44BD4E31E85DD6D00409130 /* PullupBarViewController.swift */,
-				D44BD4E51E85DDAA00409130 /* PullupBarViewModel.swift */,
+				D44BD4E31E85DD6D00409130 /* ReservationToolbarViewController.swift */,
+				D44BD4E51E85DDAA00409130 /* ReservationToolbarViewModel.swift */,
 				D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */,
 				D4883B1F1E84ACC9004EAAEC /* ReservationViewModel.swift */,
 				D4883B211E84B28A004EAAEC /* RestaurantCardViewController.swift */,
@@ -374,7 +374,7 @@
 				D45F3E381E8493D8006E5774 /* ReservationTableViewController.swift in Sources */,
 				D4883B241E84B2B1004EAAEC /* RestaurantCardViewModel.swift in Sources */,
 				009572FE1DF2210E003412B9 /* ViewController.swift in Sources */,
-				D44BD4E41E85DD6D00409130 /* PullupBarViewController.swift in Sources */,
+				D44BD4E41E85DD6D00409130 /* ReservationToolbarViewController.swift in Sources */,
 				D4883B221E84B28A004EAAEC /* RestaurantCardViewController.swift in Sources */,
 				D4883B351E85015C004EAAEC /* DishesCardTableViewCell.swift in Sources */,
 				D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */,
@@ -386,7 +386,7 @@
 				0095732B1DF22154003412B9 /* Reservation.swift in Sources */,
 				D4883B2D1E84E324004EAAEC /* MapCardViewController.swift in Sources */,
 				0095732F1DF2252F003412B9 /* ReservationAssembler.swift in Sources */,
-				D44BD4E61E85DDAA00409130 /* PullupBarViewModel.swift in Sources */,
+				D44BD4E61E85DDAA00409130 /* ReservationToolbarViewModel.swift in Sources */,
 				D4883B331E84F0F7004EAAEC /* DishesCardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

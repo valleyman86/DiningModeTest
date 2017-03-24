@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PullupBarViewModel: NSObject {
+class ReservationToolbarViewModel: NSObject {
 
     private var reservation:Reservation!
     
