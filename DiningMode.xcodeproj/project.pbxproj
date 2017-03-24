@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		009572FC1DF2210E003412B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572FB1DF2210E003412B9 /* AppDelegate.swift */; };
 		009572FE1DF2210E003412B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572FD1DF2210E003412B9 /* ViewController.swift */; };
-		009573011DF2210E003412B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009572FF1DF2210E003412B9 /* Main.storyboard */; };
 		009573031DF2210E003412B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009573021DF2210E003412B9 /* Assets.xcassets */; };
 		009573061DF2210E003412B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009573041DF2210E003412B9 /* LaunchScreen.storyboard */; };
 		009573111DF2210E003412B9 /* DiningModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009573101DF2210E003412B9 /* DiningModeTests.swift */; };
@@ -22,6 +21,12 @@
 		00EE09721DF24D160096F568 /* PartialReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09711DF24D160096F568 /* PartialReservation.json */; };
 		00EE09741DF24D520096F568 /* FullReservation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EE09731DF24D520096F568 /* FullReservation.json */; };
 		D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */; };
+		D45F3E381E8493D8006E5774 /* ReservationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */; };
+		D45F3E3F1E849944006E5774 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45F3E3D1E849944006E5774 /* Main.storyboard */; };
+		D4883B201E84ACC9004EAAEC /* ReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B1F1E84ACC9004EAAEC /* ReservationViewModel.swift */; };
+		D4883B221E84B28A004EAAEC /* RestaurantCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B211E84B28A004EAAEC /* RestaurantCardViewController.swift */; };
+		D4883B241E84B2B1004EAAEC /* RestaurantCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B231E84B2B1004EAAEC /* RestaurantCardViewModel.swift */; };
+		D4883B281E84BCFD004EAAEC /* UIViewController+SequeBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D4883B271E84BCFD004EAAEC /* UIViewController+SequeBlocks.m */; };
 		D4C31CF91E8089C20045E613 /* PullupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CF81E8089C20045E613 /* PullupController.swift */; };
 		D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +66,6 @@
 		009572F81DF2210E003412B9 /* DiningMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiningMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009572FB1DF2210E003412B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009572FD1DF2210E003412B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		009573001DF2210E003412B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		009573021DF2210E003412B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		009573051DF2210E003412B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		009573071DF2210E003412B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +82,14 @@
 		00EE09711DF24D160096F568 /* PartialReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialReservation.json; sourceTree = "<group>"; };
 		00EE09731DF24D520096F568 /* FullReservation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FullReservation.json; sourceTree = "<group>"; };
 		D45F3E351E8214C7006E5774 /* PullupViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupViewRelationshipSegue.swift; path = PullupController/PullupViewRelationshipSegue.swift; sourceTree = "<group>"; };
+		D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationTableViewController.swift; sourceTree = "<group>"; };
+		D45F3E3E1E849944006E5774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D4883B1F1E84ACC9004EAAEC /* ReservationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationViewModel.swift; sourceTree = "<group>"; };
+		D4883B211E84B28A004EAAEC /* RestaurantCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCardViewController.swift; sourceTree = "<group>"; };
+		D4883B231E84B2B1004EAAEC /* RestaurantCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCardViewModel.swift; sourceTree = "<group>"; };
+		D4883B261E84BCFD004EAAEC /* UIViewController+SequeBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SequeBlocks.h"; sourceTree = "<group>"; };
+		D4883B271E84BCFD004EAAEC /* UIViewController+SequeBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SequeBlocks.m"; sourceTree = "<group>"; };
+		D4883B291E84BD45004EAAEC /* DiningMode-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DiningMode-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4C31CF81E8089C20045E613 /* PullupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupController.swift; path = PullupController/PullupController.swift; sourceTree = "<group>"; };
 		D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupToolbarViewRelationshipSegue.swift; path = PullupController/PullupToolbarViewRelationshipSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,14 +144,20 @@
 		009572FA1DF2210E003412B9 /* DiningMode */ = {
 			isa = PBXGroup;
 			children = (
+				D4883B251E84BCFD004EAAEC /* UIViewController+SequeBlocks */,
 				009573291DF22145003412B9 /* Vendor */,
 				009572FB1DF2210E003412B9 /* AppDelegate.swift */,
 				009572FD1DF2210E003412B9 /* ViewController.swift */,
+				D45F3E371E8493D8006E5774 /* ReservationTableViewController.swift */,
+				D4883B1F1E84ACC9004EAAEC /* ReservationViewModel.swift */,
+				D4883B211E84B28A004EAAEC /* RestaurantCardViewController.swift */,
+				D4883B231E84B2B1004EAAEC /* RestaurantCardViewModel.swift */,
 				D4C31CF71E80891F0045E613 /* PullupController */,
-				009572FF1DF2210E003412B9 /* Main.storyboard */,
+				D45F3E3D1E849944006E5774 /* Main.storyboard */,
 				009573021DF2210E003412B9 /* Assets.xcassets */,
 				009573041DF2210E003412B9 /* LaunchScreen.storyboard */,
 				009573071DF2210E003412B9 /* Info.plist */,
+				D4883B291E84BD45004EAAEC /* DiningMode-Bridging-Header.h */,
 			);
 			path = DiningMode;
 			sourceTree = "<group>";
@@ -180,6 +198,15 @@
 				009573331DF2327D003412B9 /* AFNetworking.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4883B251E84BCFD004EAAEC /* UIViewController+SequeBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				D4883B261E84BCFD004EAAEC /* UIViewController+SequeBlocks.h */,
+				D4883B271E84BCFD004EAAEC /* UIViewController+SequeBlocks.m */,
+			);
+			path = "UIViewController+SequeBlocks";
 			sourceTree = "<group>";
 		};
 		D4C31CF71E80891F0045E613 /* PullupController */ = {
@@ -303,12 +330,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45F3E3F1E849944006E5774 /* Main.storyboard in Resources */,
 				009573311DF2254C003412B9 /* 2dishes.json in Resources */,
 				009573061DF2210E003412B9 /* LaunchScreen.storyboard in Resources */,
 				009573031DF2210E003412B9 /* Assets.xcassets in Resources */,
 				00EE09721DF24D160096F568 /* PartialReservation.json in Resources */,
 				00EE09741DF24D520096F568 /* FullReservation.json in Resources */,
-				009573011DF2210E003412B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,8 +360,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4883B201E84ACC9004EAAEC /* ReservationViewModel.swift in Sources */,
+				D45F3E381E8493D8006E5774 /* ReservationTableViewController.swift in Sources */,
+				D4883B241E84B2B1004EAAEC /* RestaurantCardViewModel.swift in Sources */,
 				009572FE1DF2210E003412B9 /* ViewController.swift in Sources */,
+				D4883B221E84B28A004EAAEC /* RestaurantCardViewController.swift in Sources */,
 				D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */,
+				D4883B281E84BCFD004EAAEC /* UIViewController+SequeBlocks.m in Sources */,
 				009572FC1DF2210E003412B9 /* AppDelegate.swift in Sources */,
 				D4C31CF91E8089C20045E613 /* PullupController.swift in Sources */,
 				D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */,
@@ -375,20 +407,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		009572FF1DF2210E003412B9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				009573001DF2210E003412B9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		009573041DF2210E003412B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				009573051DF2210E003412B9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D45F3E3D1E849944006E5774 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D45F3E3E1E849944006E5774 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -502,6 +534,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.DiningMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DiningMode/DiningMode-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -519,6 +552,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.DiningMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DiningMode/DiningMode-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
