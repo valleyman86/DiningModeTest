@@ -39,13 +39,15 @@ class PullupController: UIViewController {
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
         contentView.isUserInteractionEnabled = true
-        view.addSubview(contentView)
+        contentView.clipsToBounds = true
+        self.tabBarController?.view.addSubview(contentView)
+//        view.addSubview(contentView)
         
         // setup contentView contraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
         contentViewHeightConstraint.isActive = true;
 
@@ -127,11 +129,11 @@ class PullupController: UIViewController {
     
     private func updatePullupConstraints() {
         if let pullupVC = pullupViewController, let toolbarVC = toolbarViewController {
+                        
             pullupVC.view.translatesAutoresizingMaskIntoConstraints = false
             pullupVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
-//            pullupVC.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 //            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
             pullupVC.view.heightAnchor.constraint(equalToConstant: pullupVC.view.frame.height).isActive = true
         }
@@ -198,6 +200,4 @@ class PullupController: UIViewController {
             }
         }
     }
-    
-    
 }

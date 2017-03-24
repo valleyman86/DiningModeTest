@@ -119,14 +119,21 @@
             </objects>
             <point key="canvasLocation" x="582" y="-933"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Test View Controller-->
         <scene sceneID="WI8-tg-wOL">
             <objects>
-                <navigationController id="nqa-pm-2Fk" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7D6-3b-heU">
+                <navigationController id="nqa-pm-2Fk" customClass="testViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7D6-3b-heU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xtA-X0-3jF">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="sye-YV-0Tj" kind="relationship" relationship="rootViewController" id="MjK-M6-B1A"/>
                     </connections>
@@ -321,11 +328,12 @@
                             <constraint firstItem="f3O-9y-oQi" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leadingMargin" constant="5" id="A9D-me-LtA"/>
                             <constraint firstItem="Vkj-P5-i5E" firstAttribute="centerX" secondItem="mJa-i2-R5s" secondAttribute="centerX" id="BO5-rE-JeC"/>
                             <constraint firstItem="Vkj-P5-i5E" firstAttribute="bottom" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="62.5" id="I2c-z5-jpI"/>
-                            <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="162" id="JCc-w3-bOa"/>
                             <constraint firstItem="Cxv-lw-K6P" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leading" constant="40" id="POG-Ei-s2P"/>
                             <constraint firstItem="mJa-i2-R5s" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leading" id="S8p-Uc-FoE"/>
                             <constraint firstItem="f3O-9y-oQi" firstAttribute="top" secondItem="Vkj-P5-i5E" secondAttribute="bottom" constant="15" id="Urt-sp-OAc"/>
+                            <constraint firstItem="mJa-i2-R5s" firstAttribute="top" secondItem="bcz-Mv-7Mt" secondAttribute="top" id="cKJ-Ky-5Bp"/>
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="Dg0-rR-IGp" secondAttribute="bottom" constant="10" id="e71-o8-moh"/>
+                            <constraint firstAttribute="bottom" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="162" id="eg3-vJ-X6Q"/>
                             <constraint firstItem="mJa-i2-R5s" firstAttribute="top" secondItem="f8D-Eh-mFW" secondAttribute="bottom" id="gqI-xL-5be"/>
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="hKy-6u-jzS" secondAttribute="bottom" constant="10" id="mvo-3b-pZb"/>
                             <constraint firstAttribute="trailing" secondItem="mJa-i2-R5s" secondAttribute="trailing" id="qd4-ln-d1j"/>
@@ -441,7 +449,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0025198282673954964" green="0.61101275682449341" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.71718309099999999" green="0.44151577400000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" id="yfr-bK-oJK"/>
                 </viewController>

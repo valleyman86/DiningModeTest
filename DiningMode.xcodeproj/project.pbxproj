@@ -32,6 +32,7 @@
 		D4883B311E84F0E7004EAAEC /* DishesCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B301E84F0E7004EAAEC /* DishesCardViewController.swift */; };
 		D4883B331E84F0F7004EAAEC /* DishesCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B321E84F0F7004EAAEC /* DishesCardViewModel.swift */; };
 		D4883B351E85015C004EAAEC /* DishesCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B341E85015C004EAAEC /* DishesCardTableViewCell.swift */; };
+		D4883B371E854FB8004EAAEC /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4883B361E854FB8004EAAEC /* testViewController.swift */; };
 		D4C31CF91E8089C20045E613 /* PullupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CF81E8089C20045E613 /* PullupController.swift */; };
 		D4C31CFF1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		D4883B301E84F0E7004EAAEC /* DishesCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesCardViewController.swift; sourceTree = "<group>"; };
 		D4883B321E84F0F7004EAAEC /* DishesCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesCardViewModel.swift; sourceTree = "<group>"; };
 		D4883B341E85015C004EAAEC /* DishesCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesCardTableViewCell.swift; sourceTree = "<group>"; };
+		D4883B361E854FB8004EAAEC /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		D4C31CF81E8089C20045E613 /* PullupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupController.swift; path = PullupController/PullupController.swift; sourceTree = "<group>"; };
 		D4C31CFE1E809F6C0045E613 /* PullupToolbarViewRelationshipSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullupToolbarViewRelationshipSegue.swift; path = PullupController/PullupToolbarViewRelationshipSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +167,7 @@
 				D4883B301E84F0E7004EAAEC /* DishesCardViewController.swift */,
 				D4883B321E84F0F7004EAAEC /* DishesCardViewModel.swift */,
 				D4883B341E85015C004EAAEC /* DishesCardTableViewCell.swift */,
+				D4883B361E854FB8004EAAEC /* testViewController.swift */,
 				D4C31CF71E80891F0045E613 /* PullupController */,
 				D45F3E3D1E849944006E5774 /* Main.storyboard */,
 				009573021DF2210E003412B9 /* Assets.xcassets */,
@@ -378,6 +381,7 @@
 				D45F3E361E8214C7006E5774 /* PullupViewRelationshipSegue.swift in Sources */,
 				0095732B1DF22154003412B9 /* Reservation.swift in Sources */,
 				D4883B2D1E84E324004EAAEC /* MapCardViewController.swift in Sources */,
+				D4883B371E854FB8004EAAEC /* testViewController.swift in Sources */,
 				0095732F1DF2252F003412B9 /* ReservationAssembler.swift in Sources */,
 				D4883B331E84F0F7004EAAEC /* DishesCardViewModel.swift in Sources */,
 			);

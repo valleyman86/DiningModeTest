@@ -40,6 +40,8 @@ class ReservationTableViewController: UITableViewController {
         let backgroundImageView = UIImageView(image: UIImage(named: "background.png"))
         self.tableView.backgroundView = backgroundImageView
         
+        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        
         self.loadData()
     }
 
@@ -48,6 +50,10 @@ class ReservationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillLayoutSubviews() {
+        self.navigationController?.navigationBar.frame.size.height = 64
+    }
+    
     private func loadData() -> Void {
         self.viewModel.update() {
         
