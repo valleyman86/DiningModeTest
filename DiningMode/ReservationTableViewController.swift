@@ -16,7 +16,7 @@ enum ReservationCards:Int {
 
 class ReservationTableViewController: UITableViewController {
     private var viewModel: ReservationViewModel!
-    private var cards: Set<ReservationCards> = Set()
+    private var cards: NSMutableOrderedSet = NSMutableOrderedSet()
     private var restaurantCardViewController: RestaurantCardViewController!
     private var mapCardViewController: MapCardViewController!
     private var dishesCardViewController: DishesCardViewController!
@@ -71,7 +71,7 @@ class ReservationTableViewController: UITableViewController {
             
             restaurantCardViewController.viewModel = restaurantCardVM
             
-            cards.insert(ReservationCards.restaurant)
+            cards.add(ReservationCards.restaurant)
         }
     }
     
@@ -88,7 +88,7 @@ class ReservationTableViewController: UITableViewController {
             
             self.mapCardViewController.viewModel = mapCardVM
             
-            cards.insert(ReservationCards.map)
+            cards.add(ReservationCards.map)
         }
     }
     
@@ -104,18 +104,26 @@ class ReservationTableViewController: UITableViewController {
             }
             self.dishesCardViewController.viewModel = dishesCardVM
             
-            cards.insert(ReservationCards.dishes)
+            cards.add(ReservationCards.dishes)
         }
     }
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (cards.contains(ReservationCards(rawValue: indexPath.row)!)) {
-            return UITableViewAutomaticDimension
-        } else {
-            return 0
-        }
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cards.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // we load the cards in the order we prefer and if a card doesnt exist we can skip it
+        let card = cards[indexPath.row] as! ReservationCards
+        let newIndexPath = IndexPath(row: card.rawValue, section: 0)
+        return super.tableView(tableView, cellForRowAt: newIndexPath)
     }
 
     // MARK: - Segues
