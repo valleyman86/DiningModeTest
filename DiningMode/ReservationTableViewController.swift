@@ -35,7 +35,7 @@ class ReservationTableViewController: UITableViewController {
         self.viewModel = ReservationViewModel()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 300
         
         let backgroundImageView = UIImageView(image: UIImage(named: "background.png"))
         self.tableView.backgroundView = backgroundImageView

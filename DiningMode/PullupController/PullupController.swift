@@ -54,6 +54,9 @@ class PullupController: UIViewController {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
         contentView.addGestureRecognizer(panGestureRecognizer)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToolBarGesture))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+        
         // load the view controllers from the storyboard if there are any
         // TODO: Figure out a better way for this that is less error prone and can support not using a storyboard...
         
@@ -114,7 +117,7 @@ class PullupController: UIViewController {
         if let pullupVC = viewController {
             // notify and add new viewcontroller to container
             addChildViewController(pullupVC)
-            pullupVC.view.frame = view.bounds
+//            pullupVC.view.frame = view.frame
             contentView.addSubview(pullupVC.view)
             pullupVC.didMove(toParentViewController: self)
             
@@ -128,12 +131,56 @@ class PullupController: UIViewController {
             pullupVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
-            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-            //pullupVC.view.heightAnchor.constraint(equalToConstant: pullupVC.view.frame.height).isActive = true
+//            pullupVC.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+//            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            pullupVC.view.heightAnchor.constraint(equalToConstant: pullupVC.view.frame.height).isActive = true
         }
     }
     
-    // MARK: - Interactions
+    // MARK: - Navigation
+    
+    public func dismissPullup(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let toolbarVC = toolbarViewController {
+            contentViewHeightConstraint.constant = toolbarVC.view.frame.height
+        } else {
+            contentViewHeightConstraint.constant = 0;
+        }
+        
+        if (flag) {
+            UIView.animate(withDuration: 0.1) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    public func openPullup(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let toolbarVC = toolbarViewController {
+            contentViewHeightConstraint.constant = view.frame.height + toolbarVC.view.frame.height
+        } else {
+            contentViewHeightConstraint.constant = view.frame.height
+        }
+        
+        if (flag) {
+            UIView.animate(withDuration: 0.1) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+             self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func tapToolBarGesture(gestureRecognizer: UITapGestureRecognizer) {
+        // either open or close the view depending on its current state
+        if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
+            if (contentViewHeightConstraint.constant > view.frame.height * 0.5) {
+                self.dismissPullup(animated: true)
+            } else {
+                self.openPullup(animated: true)
+            }
+        }
+    }
     
     @objc private func toolbarDragGesture(gestureRecognizer: UIPanGestureRecognizer) {
         // we offset the pullup based on our drag.
@@ -145,22 +192,12 @@ class PullupController: UIViewController {
         // provide snapping animations when the view is let go based on a threshold
         if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
             if (contentViewHeightConstraint.constant > view.frame.height * 0.5) {
-                 if let toolbarVC = toolbarViewController {
-                    contentViewHeightConstraint.constant = view.frame.height + toolbarVC.view.frame.height
-                 } else {
-                    contentViewHeightConstraint.constant = view.frame.height
-                }
+                self.openPullup(animated: true)
             } else {
-                if let toolbarVC = toolbarViewController {
-                    contentViewHeightConstraint.constant = toolbarVC.view.frame.height
-                } else {
-                    contentViewHeightConstraint.constant = 0;
-                }
-            }
-            
-            UIView.animate(withDuration: 0.1) {
-                self.view.layoutIfNeeded()
+                self.dismissPullup(animated: true)
             }
         }
     }
+    
+    
 }

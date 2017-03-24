@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHv-fa-dKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="-1247"/>
+            <point key="canvasLocation" x="582" y="-1362"/>
         </scene>
         <!--First-->
         <scene sceneID="tne-QT-ifu">
@@ -79,7 +79,7 @@
                     <tabBarItem key="tabBarItem" title="First" id="qur-Lm-cub"/>
                     <connections>
                         <segue destination="goM-ac-FRB" kind="custom" identifier="idToolbarSegue" customClass="PullupToolbarViewRelationshipSegue" customModule="DiningMode" animates="NO" id="GKL-jk-P47"/>
-                        <segue destination="sye-YV-0Tj" kind="custom" identifier="idPullupSegue" customClass="PullupViewRelationshipSegue" customModule="DiningMode" id="NCx-d8-2H0"/>
+                        <segue destination="nqa-pm-2Fk" kind="custom" identifier="idPullupSegue" customClass="PullupViewRelationshipSegue" customModule="DiningMode" id="ylm-Xg-qFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,11 +95,11 @@
                         <viewControllerLayoutGuide type="bottom" id="18b-d1-Mki"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j2L-2U-aa4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Top" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-3w-KUR">
-                                <rect key="frame" x="166" y="59" width="42" height="33"/>
+                                <rect key="frame" x="166" y="20" width="42" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -113,17 +113,33 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="100"/>
+                    <size key="freeformSize" width="375" height="50"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CM-xK-PHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="581.60000000000002" y="-774.51274362818594"/>
+            <point key="canvasLocation" x="582" y="-933"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WI8-tg-wOL">
+            <objects>
+                <navigationController id="nqa-pm-2Fk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7D6-3b-heU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sye-YV-0Tj" kind="relationship" relationship="rootViewController" id="MjK-M6-B1A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qpy-lp-8Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582" y="-503"/>
         </scene>
         <!--Reservation Table View Controller-->
         <scene sceneID="naM-Ti-DDp">
             <objects>
                 <tableViewController id="sye-YV-0Tj" customClass="ReservationTableViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Y8-zb-rz5">
+                    <tableView key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Y8-zb-rz5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.39741348809999999" green="0.40159678799999998" blue="0.40159678799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,7 +163,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds " value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="AhU-mT-hG2" kind="embed" identifier="idRestaurantCardEmbedSegue" id="oXe-kR-4Bm"/>
+                                                        <segue destination="AhU-mT-hG2" kind="embed" identifier="idRestaurantCardEmbedSegue" id="SXU-1f-V13"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>
@@ -228,13 +244,18 @@
                             <outlet property="delegate" destination="sye-YV-0Tj" id="Yuc-xt-hGw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="afS-7O-NLH">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="YSV-9h-LHk">
+                            <color key="tintColor" red="0.74042665155440412" green="0.13026698023861955" blue="0.15429687244969395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dishesTableViewCell" destination="N0e-NS-Ty0" id="VAk-AX-0Sw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjx-KK-4rx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="-304"/>
+            <point key="canvasLocation" x="1442" y="-503"/>
         </scene>
         <!--Restaurant Card View Controller-->
         <scene sceneID="LCd-by-spX">
@@ -299,13 +320,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="f3O-9y-oQi" secondAttribute="trailing" constant="5" id="6TU-GB-8Ns"/>
                             <constraint firstItem="f3O-9y-oQi" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leadingMargin" constant="5" id="A9D-me-LtA"/>
                             <constraint firstItem="Vkj-P5-i5E" firstAttribute="centerX" secondItem="mJa-i2-R5s" secondAttribute="centerX" id="BO5-rE-JeC"/>
-                            <constraint firstItem="Vkj-P5-i5E" firstAttribute="top" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="-62.5" id="M9W-aF-Wfu"/>
+                            <constraint firstItem="Vkj-P5-i5E" firstAttribute="bottom" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="62.5" id="I2c-z5-jpI"/>
+                            <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="162" id="JCc-w3-bOa"/>
                             <constraint firstItem="Cxv-lw-K6P" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leading" constant="40" id="POG-Ei-s2P"/>
                             <constraint firstItem="mJa-i2-R5s" firstAttribute="leading" secondItem="bcz-Mv-7Mt" secondAttribute="leading" id="S8p-Uc-FoE"/>
                             <constraint firstItem="f3O-9y-oQi" firstAttribute="top" secondItem="Vkj-P5-i5E" secondAttribute="bottom" constant="15" id="Urt-sp-OAc"/>
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="Dg0-rR-IGp" secondAttribute="bottom" constant="10" id="e71-o8-moh"/>
-                            <constraint firstItem="mJa-i2-R5s" firstAttribute="top" secondItem="f8D-Eh-mFW" secondAttribute="bottom" id="fqB-eB-foZ"/>
-                            <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="f3O-9y-oQi" secondAttribute="bottom" constant="59" id="kjn-DH-0ut"/>
+                            <constraint firstItem="mJa-i2-R5s" firstAttribute="top" secondItem="f8D-Eh-mFW" secondAttribute="bottom" id="gqI-xL-5be"/>
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="hKy-6u-jzS" secondAttribute="bottom" constant="10" id="mvo-3b-pZb"/>
                             <constraint firstAttribute="trailing" secondItem="mJa-i2-R5s" secondAttribute="trailing" id="qd4-ln-d1j"/>
                             <constraint firstAttribute="trailing" secondItem="Dg0-rR-IGp" secondAttribute="trailing" constant="40" id="tim-mt-nwd"/>
@@ -328,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUH-9N-wWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="-775"/>
+            <point key="canvasLocation" x="2413.5999999999999" y="-838.38080959520244"/>
         </scene>
         <!--Map Card View Controller-->
         <scene sceneID="ssq-W9-Ht0">
@@ -398,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f25-H9-uyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-461"/>
+            <point key="canvasLocation" x="2414" y="-525"/>
         </scene>
         <!--Second-->
         <scene sceneID="E1V-WB-Nqh">
@@ -531,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Mu-bj-Kl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1453.5999999999999" y="-126.38680659670166"/>
+            <point key="canvasLocation" x="2414" y="-189"/>
         </scene>
     </scenes>
 </document>
