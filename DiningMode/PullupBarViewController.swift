@@ -1,5 +1,5 @@
 //
-//  testViewController.swift
+//  PullupBarViewController.swift
 //  DiningMode
 //
 //  Created by Joseph Gentry on 3/24/17.
@@ -8,17 +8,19 @@
 
 import UIKit
 
-class testViewController: UINavigationController, UINavigationBarDelegate {
+class PullupBarViewController: UIViewController {
 
+    private var viewModel: PullupBarViewModel!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.delegate = self
         // Do any additional setup after loading the view.
+        self.viewModel = PullupBarViewModel()
         
-        var navBarFrame = self.navigationBar.frame
-        navBarFrame.size.height = 64
-        self.navigationBar.frame = navBarFrame
+        self.loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,11 +28,13 @@ class testViewController: UINavigationController, UINavigationBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.top
-    }
 
+    private func loadData() -> Void {
+        self.viewModel.update() {
+            nameLabel.text = self.viewModel.restaurantName
+        };
+    }
+    
     /*
     // MARK: - Navigation
 

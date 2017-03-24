@@ -9,6 +9,11 @@
 
 import UIKit
 
+protocol PullupControllerProtocol : class {
+    weak var pullupController: PullupController? { get set }
+}
+
+
 class PullupController: UIViewController {
 
     // MARK: - Properties
@@ -56,9 +61,6 @@ class PullupController: UIViewController {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
         contentView.addGestureRecognizer(panGestureRecognizer)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToolBarGesture))
-        contentView.addGestureRecognizer(tapGestureRecognizer)
-        
         // load the view controllers from the storyboard if there are any
         // TODO: Figure out a better way for this that is less error prone and can support not using a storyboard...
         
@@ -98,6 +100,9 @@ class PullupController: UIViewController {
             contentView.addSubview(toolbarVC.view)
             toolbarVC.didMove(toParentViewController: self)
             
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToolBarGesture))
+            toolbarVC.view.addGestureRecognizer(tapGestureRecognizer)
+            
             // create contraints to make the toolbar snap the bottom of the layout
             toolbarVC.view.translatesAutoresizingMaskIntoConstraints = false
             toolbarVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -119,9 +124,21 @@ class PullupController: UIViewController {
         if let pullupVC = viewController {
             // notify and add new viewcontroller to container
             addChildViewController(pullupVC)
-//            pullupVC.view.frame = view.frame
             contentView.addSubview(pullupVC.view)
             pullupVC.didMove(toParentViewController: self)
+            
+            // we need to provide access to this pullupController to child classes
+            if let navController = pullupVC as? UINavigationController {
+                for viewController in navController.viewControllers {
+                    if let currentVC = viewController as? PullupControllerProtocol {
+                        currentVC.pullupController = self;
+                    }
+                }
+            } else {
+                if let currentVC = pullupVC as? PullupControllerProtocol {
+                    currentVC.pullupController = self;
+                }
+            }
             
             updatePullupConstraints()
         }
@@ -135,22 +152,23 @@ class PullupController: UIViewController {
             pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
 //            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-            pullupVC.view.heightAnchor.constraint(equalToConstant: pullupVC.view.frame.height).isActive = true
+            pullupVC.view.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
         }
     }
     
     // MARK: - Navigation
     
     public func dismissPullup(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let toolbarVC = toolbarViewController {
-            contentViewHeightConstraint.constant = toolbarVC.view.frame.height
+        if let toolbarVC = self.toolbarViewController {
+            self.contentViewHeightConstraint.constant = toolbarVC.view.frame.height
         } else {
-            contentViewHeightConstraint.constant = 0;
+            self.contentViewHeightConstraint.constant = 0;
         }
         
         if (flag) {
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.4) {
                 self.view.layoutIfNeeded()
+                self.contentView.layoutIfNeeded()
             }
         } else {
             self.view.layoutIfNeeded()

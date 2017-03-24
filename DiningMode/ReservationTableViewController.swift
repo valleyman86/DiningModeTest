@@ -14,13 +14,17 @@ enum ReservationCards:Int {
     case dishes
 }
 
-class ReservationTableViewController: UITableViewController {
+class ReservationTableViewController: UITableViewController, PullupControllerProtocol {
+    internal var pullupController: PullupController?
+    
     private var viewModel: ReservationViewModel!
     private var cards: NSMutableOrderedSet = NSMutableOrderedSet()
     private var restaurantCardViewController: RestaurantCardViewController!
     private var mapCardViewController: MapCardViewController!
     private var dishesCardViewController: DishesCardViewController!
 
+    private let navBarHeight:CGFloat = 64
+    
     @IBOutlet weak var dishesTableViewCell: UITableViewCell!
     
     override func viewDidLoad() {
@@ -40,7 +44,7 @@ class ReservationTableViewController: UITableViewController {
         let backgroundImageView = UIImageView(image: UIImage(named: "background.png"))
         self.tableView.backgroundView = backgroundImageView
         
-        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+        self.tableView.contentInset = UIEdgeInsetsMake(navBarHeight, 0, 0, 0);
         
         self.loadData()
     }
@@ -51,7 +55,7 @@ class ReservationTableViewController: UITableViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        self.navigationController?.navigationBar.frame.size.height = 64
+        self.navigationController?.navigationBar.frame.size.height = navBarHeight
     }
     
     private func loadData() -> Void {
@@ -65,15 +69,20 @@ class ReservationTableViewController: UITableViewController {
         };
     }
     
+    @IBAction func didTapCloseButton(_ sender: Any) {
+        if let pullup = self.pullupController {
+            pullup.dismissPullup(animated: true)
+        }
+    }
+    
     private func loadRestaurantCard() -> Void {
         // Setup the restaurant info card by passing the relevant reservation data to it
-        // TODO: Remove the access of the model and put relevant data in the viewModel for this view (currently violates MVVM)
         if (self.restaurantCardViewController != nil) {
             let restaurantCardVM = RestaurantCardViewModel()
-            restaurantCardVM.restaurantName = self.viewModel.reservation.restaurant.name
-            restaurantCardVM.getRestaurantImage(imageURL: (self.viewModel.reservation.restaurant.profilePhoto?.photoSizes.first?.uri)!)
-            restaurantCardVM.partySize = self.viewModel.reservation.partySize
-            restaurantCardVM.reservationDate = self.viewModel.reservation.localDate
+            restaurantCardVM.restaurantName = self.viewModel.restaurantName
+            restaurantCardVM.getRestaurantImage(imageURL: self.viewModel.restaurantProfileImageURI)
+            restaurantCardVM.partySize = self.viewModel.partySize
+            restaurantCardVM.reservationDate = self.viewModel.reservationDate
             
             restaurantCardViewController.viewModel = restaurantCardVM
             
@@ -83,14 +92,13 @@ class ReservationTableViewController: UITableViewController {
     
     private func loadMapCard() -> Void {
         // Setup the map card by passing the relevant reservation data to it
-        // TODO: Remove the access of the model and put relevant data in the viewModel for this view (currently violates MVVM)
         if (self.mapCardViewController != nil) {
             let mapCardVM = MapCardViewModel()
-            mapCardVM.street = self.viewModel.reservation.restaurant.street
-            mapCardVM.city = self.viewModel.reservation.restaurant.city
-            mapCardVM.state = self.viewModel.reservation.restaurant.state
-            mapCardVM.zip = self.viewModel.reservation.restaurant.zip
-            mapCardVM.location = self.viewModel.reservation.restaurant.location
+            mapCardVM.street = self.viewModel.restaurantStreet
+            mapCardVM.city = self.viewModel.restaurantCity
+            mapCardVM.state = self.viewModel.restaurantState
+            mapCardVM.zip = self.viewModel.restaurantZip
+            mapCardVM.location = self.viewModel.restaurantLocation
             
             self.mapCardViewController.viewModel = mapCardVM
             
@@ -100,10 +108,9 @@ class ReservationTableViewController: UITableViewController {
     
     private func loadPopularDishesCard() -> Void {
         // Setup the popular dishes card by passing the relevant reservation data to it
-        // TODO: Remove the access of the model and put relevant data in the viewModel for this view (currently violates MVVM)
-        if (self.dishesCardViewController != nil && self.viewModel.reservation.restaurant.dishes.count > 0) {
+        if (self.dishesCardViewController != nil && self.viewModel.restaurantDishes.count > 0) {
             let dishesCardVM = DishesCardViewModel()
-            dishesCardVM.dishes = self.viewModel.reservation.restaurant.dishes
+            dishesCardVM.dishes = self.viewModel.restaurantDishes
             
             self.dishesCardViewController.layoutUpdatedCallback = {
                 self.dishesTableViewCell.layoutIfNeeded()

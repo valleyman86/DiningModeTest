@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="-354" y="-503"/>
         </scene>
-        <!--View Controller-->
+        <!--Pullup Bar View Controller-->
         <scene sceneID="7df-W6-gyy">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" id="goM-ac-FRB" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="goM-ac-FRB" customClass="PullupBarViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zjs-Hq-huh"/>
                         <viewControllerLayoutGuide type="bottom" id="18b-d1-Mki"/>
@@ -98,15 +98,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Top" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-3w-KUR">
-                                <rect key="frame" x="166" y="20" width="42" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-ym-wlS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfZ-3w-KUR">
+                                <rect key="frame" x="173" y="15" width="29" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.02823911544997082" green="0.62142322589911281" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zkw-ym-wlS" secondAttribute="trailing" id="GjL-I8-7y1"/>
+                            <constraint firstItem="rfZ-3w-KUR" firstAttribute="centerY" secondItem="j2L-2U-aa4" secondAttribute="centerY" id="MSu-Ji-9xh"/>
+                            <constraint firstAttribute="bottom" secondItem="zkw-ym-wlS" secondAttribute="bottom" id="Or0-gS-oLX"/>
+                            <constraint firstItem="rfZ-3w-KUR" firstAttribute="centerX" secondItem="j2L-2U-aa4" secondAttribute="centerX" id="ehr-pF-LFo"/>
+                            <constraint firstItem="zkw-ym-wlS" firstAttribute="top" secondItem="j2L-2U-aa4" secondAttribute="top" id="ty2-hS-JWP"/>
+                            <constraint firstItem="zkw-ym-wlS" firstAttribute="leading" secondItem="j2L-2U-aa4" secondAttribute="leading" id="xIl-l8-bF6"/>
+                        </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="100"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -114,16 +124,19 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="50"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="rfZ-3w-KUR" id="mI9-qk-CDd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CM-xK-PHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="582" y="-933"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="WI8-tg-wOL">
             <objects>
-                <navigationController id="nqa-pm-2Fk" customClass="testViewController" customModule="DiningMode" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7D6-3b-heU">
+                <navigationController id="nqa-pm-2Fk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7D6-3b-heU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -254,6 +267,9 @@
                     <navigationItem key="navigationItem" id="afS-7O-NLH">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="YSV-9h-LHk">
                             <color key="tintColor" red="0.74042665155440412" green="0.13026698023861955" blue="0.15429687244969395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapCloseButton:" destination="sye-YV-0Tj" id="b1p-ru-OIA"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -489,7 +505,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLi-TN-GGT" id="EuJ-8e-orR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ot0-IO-dVm">
@@ -563,4 +579,7 @@
             <point key="canvasLocation" x="2414" y="-189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="489" height="871"/>
+    </resources>
 </document>
