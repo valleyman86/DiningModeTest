@@ -17,9 +17,15 @@ class DishesCardViewController: UIViewController, UITableViewDataSource, UITable
         didSet {
             self.viewModel.updatedCallback = { [unowned self] in
                 self.tableView.reloadData();
+                if (self.layoutUpdatedCallback != nil) {
+                    self.layoutUpdatedCallback!()
+                }
             }
         }
     }
+    
+    // this property is used to update the layouts to fit after the content changes.
+    public var layoutUpdatedCallback:(() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,27 +41,19 @@ class DishesCardViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-//    override func viewWillLayoutSubviews() {
-//        
-//        tableViewHeightConstraint.constant = self.tableView.contentSize.height
-//        super.updateViewConstraints()
-////        
-////        self.parent?.view.setNeedsLayout()
-////        self.parent?.view.layoutIfNeeded()
-////        self.parent?.updateViewConstraints()
-////        self.parent?.view.updateConstraintsIfNeeded()
-//        
-////        self.view.setNeedsLayout()
-////        self.view.layoutIfNeeded()
-////        self.updateViewConstraints()
-////        self.view.updateConstraintsIfNeeded()
-//    }
+        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        tableViewHeightConstraint.constant = self.tableView.contentSize.height
+        self.updateViewConstraints()
+    }
+    
     
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(self.viewModel.dishes.count, 2)
+        return min(self.viewModel.dishes.count, 3)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,16 +68,4 @@ class DishesCardViewController: UIViewController, UITableViewDataSource, UITable
         }
         return cell
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

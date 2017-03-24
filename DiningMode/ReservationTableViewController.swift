@@ -20,6 +20,8 @@ class ReservationTableViewController: UITableViewController {
     private var restaurantCardViewController: RestaurantCardViewController!
     private var mapCardViewController: MapCardViewController!
     private var dishesCardViewController: DishesCardViewController!
+
+    @IBOutlet weak var dishesTableViewCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +88,7 @@ class ReservationTableViewController: UITableViewController {
             
             self.mapCardViewController.viewModel = mapCardVM
             
-//            cards.insert(ReservationCards.map)
+            cards.insert(ReservationCards.map)
         }
     }
     
@@ -97,6 +99,9 @@ class ReservationTableViewController: UITableViewController {
             let dishesCardVM = DishesCardViewModel()
             dishesCardVM.dishes = self.viewModel.reservation.restaurant.dishes
             
+            self.dishesCardViewController.layoutUpdatedCallback = {
+                self.dishesTableViewCell.layoutIfNeeded()
+            }
             self.dishesCardViewController.viewModel = dishesCardVM
             
             cards.insert(ReservationCards.dishes)

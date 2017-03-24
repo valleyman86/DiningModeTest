@@ -126,7 +126,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Y8-zb-rz5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.24432376336263317" blue="0.204944791528201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.39741348809999999" green="0.40159678799999998" blue="0.40159678799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="eHX-YF-frP">
                                 <cells>
@@ -228,6 +228,9 @@
                             <outlet property="delegate" destination="sye-YV-0Tj" id="Yuc-xt-hGw"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="dishesTableViewCell" destination="N0e-NS-Ty0" id="VAk-AX-0Sw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjx-KK-4rx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -504,7 +507,7 @@
                                 </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0198914904" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wFX-R0-APp" secondAttribute="trailing" id="0Bm-fr-6RG"/>
                             <constraint firstItem="Zg2-6S-eaw" firstAttribute="top" secondItem="wFX-R0-APp" secondAttribute="bottom" priority="999" id="FYn-8d-sRZ"/>
