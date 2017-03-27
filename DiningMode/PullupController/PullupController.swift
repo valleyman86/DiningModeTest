@@ -44,22 +44,22 @@ class PullupController: UIViewController {
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
         contentView.clipsToBounds = true
-//        self.tabBarController?.view.addSubview(contentView)
-        self.view.addSubview(contentView)
+        self.tabBarController?.view.addSubview(contentView)
+//        self.view.addSubview(contentView)
         
         // setup contentView contraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
-//        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
         
-        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+//        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+//        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
-        contentViewHeightConstraint.isActive = true;
-
+        contentViewHeightConstraint.isActive = true
+        
         // we use a gesture to drag the pullup
     
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
@@ -174,7 +174,9 @@ class PullupController: UIViewController {
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
+                self.tabBarController?.view.layoutIfNeeded()
+
             }
         } else {
             self.view.layoutIfNeeded()
@@ -182,10 +184,10 @@ class PullupController: UIViewController {
     }
     
     public func openPullup(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let toolbarVC = toolbarViewController {
-            contentViewHeightConstraint.constant = view.frame.height + toolbarVC.view.frame.height
+        if let toolbarVC = self.toolbarViewController {
+            self.contentViewHeightConstraint.constant = self.view.frame.height + toolbarVC.view.frame.height
         } else {
-            contentViewHeightConstraint.constant = view.frame.height
+            self.contentViewHeightConstraint.constant = self.view.frame.height
         }
         
         //TODO: Toolbar hiding
@@ -193,7 +195,8 @@ class PullupController: UIViewController {
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
+                self.tabBarController?.view.layoutIfNeeded()
             }
         } else {
              self.view.layoutIfNeeded()
