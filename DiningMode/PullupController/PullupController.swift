@@ -20,6 +20,7 @@ class PullupController: UIViewController {
     
     private var contentView: UIView!
     private var contentViewHeightConstraint: NSLayoutConstraint!
+    private var contentViewTopConstraint: NSLayoutConstraint!
 
     public var toolbarViewController: UIViewController? {
         didSet {
@@ -57,11 +58,14 @@ class PullupController: UIViewController {
 //        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
 //        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
+        // We need to create a height constraint that we can use to modify the height of the pullup view. This is lower priority so that it can snap to the top of the view when we need to (letting go).
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
+        contentViewHeightConstraint.priority = 750
         contentViewHeightConstraint.isActive = true
         
+        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: (self.tabBarController?.view.topAnchor)!)
+        
         // we use a gesture to drag the pullup
-    
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
         contentView.addGestureRecognizer(panGestureRecognizer)
         
@@ -116,6 +120,7 @@ class PullupController: UIViewController {
             
             // Update the contentView to fit the height of this toolbar
             contentViewHeightConstraint.constant = toolbarVC.view.frame.height
+            contentViewTopConstraint.constant = -toolbarVC.view.frame.height
             
             // We want the pullup always on top
             view.bringSubview(toFront: contentView)
@@ -156,7 +161,6 @@ class PullupController: UIViewController {
             pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
             pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-//            pullupVC.view.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
         }
     }
     
@@ -169,11 +173,11 @@ class PullupController: UIViewController {
             self.contentViewHeightConstraint.constant = 0;
         }
         
-        //TODO: Toolbar hiding
-        //self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
+        contentViewTopConstraint.isActive = false
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
 //                self.view.layoutIfNeeded()
                 self.tabBarController?.view.layoutIfNeeded()
 
@@ -184,17 +188,11 @@ class PullupController: UIViewController {
     }
     
     public func openPullup(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let toolbarVC = self.toolbarViewController {
-            self.contentViewHeightConstraint.constant = self.view.frame.height + toolbarVC.view.frame.height
-        } else {
-            self.contentViewHeightConstraint.constant = self.view.frame.height
-        }
-        
-        //TODO: Toolbar hiding
-        //self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + (self.tabBarController?.tabBar.frame.height)!
+        contentViewTopConstraint.isActive = true
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + (self.tabBarController?.tabBar.frame.height)!
 //                self.view.layoutIfNeeded()
                 self.tabBarController?.view.layoutIfNeeded()
             }
@@ -219,7 +217,6 @@ class PullupController: UIViewController {
         let translation = gestureRecognizer.translation(in: view)
         contentViewHeightConstraint.constant -= translation.y
         gestureRecognizer.setTranslation(CGPoint.zero, in: view)
-        
         
         // provide snapping animations when the view is let go based on a threshold
         if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
