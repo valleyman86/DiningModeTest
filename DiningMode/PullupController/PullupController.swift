@@ -52,9 +52,11 @@ class PullupController: UIViewController {
 //        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
 //        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
 //        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
+        
         contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
         contentViewHeightConstraint.isActive = true;
 
@@ -155,11 +157,6 @@ class PullupController: UIViewController {
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
             pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 //            pullupVC.view.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-            
-            /*
-            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pullupVC]|", options: [], metrics: nil, views: ["pullupVC" : pullupVC.view]))
-            self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pullupVC]|", options: [], metrics: nil, views: ["pullupVC" : pullupVC.view]))
- */
         }
     }
     
@@ -197,7 +194,6 @@ class PullupController: UIViewController {
         if (flag) {
             UIView.animate(withDuration: 0.1) {
                 self.view.layoutIfNeeded()
-//                self.contentView.layoutIfNeeded()
             }
         } else {
              self.view.layoutIfNeeded()
