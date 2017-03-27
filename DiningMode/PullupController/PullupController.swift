@@ -43,7 +43,6 @@ class PullupController: UIViewController {
         // setup the content view used for the pullup
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
-        contentView.isUserInteractionEnabled = true
         contentView.clipsToBounds = true
 //        self.tabBarController?.view.addSubview(contentView)
         self.view.addSubview(contentView)

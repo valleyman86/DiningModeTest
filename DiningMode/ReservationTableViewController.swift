@@ -44,7 +44,7 @@ class ReservationTableViewController: UITableViewController, PullupControllerPro
         let backgroundImageView = UIImageView(image: UIImage(named: "background.png"))
         self.tableView.backgroundView = backgroundImageView
         
-//        self.tableView.contentInset = UIEdgeInsetsMake(navBarHeight, 0, 0, 0);
+        self.tableView.contentInset = UIEdgeInsetsMake(navBarHeight, 0, 0, 0);
         
         self.loadData()
     }
@@ -55,7 +55,12 @@ class ReservationTableViewController: UITableViewController, PullupControllerPro
     }
 
 //    override func viewWillLayoutSubviews() {
-//        self.navigationController?.navigationBar.frame.size.height = navBarHeight
+//        self.tableView.contentInset = UIEdgeInsetsMake((self.navigationController?.navigationBar.frame.height)!, 0, 0, 0);
+////        self.navigationController?.navigationBar.frame.size.height = navBarHeight
+//    }
+
+//    override func viewDidLayoutSubviews() {
+//        self.tableView.contentInset = UIEdgeInsetsMake((self.navigationController?.navigationBar.frame.height)!, 0, 0, 0);
 //    }
     
     private func loadData() -> Void {
