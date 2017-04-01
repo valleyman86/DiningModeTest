@@ -45,25 +45,29 @@ class PullupController: UIViewController {
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
         contentView.clipsToBounds = true
-        self.tabBarController?.view.addSubview(contentView)
-//        self.view.addSubview(contentView)
+//        self.tabBarController?.view.addSubview(contentView)
+        self.view.addSubview(contentView)
         
         // setup contentView contraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
+//        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
+//        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
+//        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
         
-//        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-//        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
 //        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
         
         // We need to create a height constraint that we can use to modify the height of the pullup view. This is lower priority so that it can snap to the top of the view when we need to (letting go).
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
+        contentViewHeightConstraint.identifier = "contentViewHeightConstraint"
         contentViewHeightConstraint.priority = 750
         contentViewHeightConstraint.isActive = true
         
-        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: (self.tabBarController?.view.topAnchor)!)
+//        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: (self.tabBarController?.view.topAnchor)!)
+        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: self.view.topAnchor)
+        contentViewTopConstraint.identifier = "contentViewTopConstraint"
         
         // we use a gesture to drag the pullup
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(toolbarDragGesture))
