@@ -380,9 +380,9 @@
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="Dg0-rR-IGp" secondAttribute="bottom" constant="10" id="e71-o8-moh"/>
                             <constraint firstItem="HZc-rR-nOr" firstAttribute="top" secondItem="hKy-6u-jzS" secondAttribute="bottom" constant="10" id="mvo-3b-pZb"/>
                             <constraint firstAttribute="trailing" secondItem="mJa-i2-R5s" secondAttribute="trailing" id="qd4-ln-d1j"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="162" id="r8R-bX-WfS"/>
+                            <constraint firstAttribute="bottom" secondItem="mJa-i2-R5s" secondAttribute="bottom" constant="162" id="r8R-bX-WfS"/>
                             <constraint firstAttribute="trailing" secondItem="Dg0-rR-IGp" secondAttribute="trailing" constant="40" id="tim-mt-nwd"/>
-                            <constraint firstAttribute="topMargin" secondItem="mJa-i2-R5s" secondAttribute="top" id="vpO-KJ-dHd"/>
+                            <constraint firstAttribute="top" secondItem="mJa-i2-R5s" secondAttribute="top" id="vpO-KJ-dHd"/>
                             <constraint firstItem="hKy-6u-jzS" firstAttribute="centerX" secondItem="bcz-Mv-7Mt" secondAttribute="centerX" id="wdm-U5-22m"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -536,7 +536,7 @@
             <objects>
                 <tableViewController id="nN6-Jn-AGk" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Zh-nh-XZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.51110669009999998" blue="0.41862930780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -746,6 +746,6 @@
         <image name="background" width="489" height="871"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GSf-I0-9XQ"/>
+        <segue reference="AHq-0f-gmy"/>
     </inferredMetricsTieBreakers>
 </document>
