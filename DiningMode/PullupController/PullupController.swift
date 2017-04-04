@@ -12,6 +12,7 @@ import ObjectiveC
 
 private var pullupControllerAssociationKey: UInt8 = 0
 
+// This is an extension that allows us to access the pullup controller from the UIViewController in the pullup view (similar to self.navigationController)
 extension UIViewController {
     var pullupController: PullupController! {
         get {
