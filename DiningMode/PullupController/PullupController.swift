@@ -8,16 +8,30 @@
 //
 
 import UIKit
+import ObjectiveC
 
-protocol PullupControllerProtocol : class {
-    weak var pullupController: PullupController? { get set }
+private var pullupControllerAssociationKey: UInt8 = 0
+
+extension UIViewController {
+    var pullupController: PullupController! {
+        get {
+            return objc_getAssociatedObject(self, &pullupControllerAssociationKey) as? PullupController
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &pullupControllerAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
+    }
+}
+
+protocol PullupControllerDelegate : class {
+    var bottomAnchorConstantForPullupBar: Float? { get set }
+//    @objc optional func bottomAnchorConstantForPullupBar(_ pullupController: PullupController) -> NSLayoutYAxisAnchor
 }
 
 
 class PullupController: UIViewController {
 
     // MARK: - Properties
-    
     private var contentView: UIView!
     private var contentViewHeightConstraint: NSLayoutConstraint!
     private var contentViewTopConstraint: NSLayoutConstraint!
@@ -45,19 +59,14 @@ class PullupController: UIViewController {
         contentView = UIView(frame: view.frame)
         contentView.backgroundColor = UIColor.darkGray
         contentView.clipsToBounds = true
-//        self.tabBarController?.view.addSubview(contentView)
         self.view.addSubview(contentView)
         
         // setup contentView contraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.leadingAnchor.constraint(equalTo: (self.tabBarController?.view.leadingAnchor)!).isActive = true
-//        contentView.trailingAnchor.constraint(equalTo: (self.tabBarController?.view.trailingAnchor)!).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: (self.tabBarController?.tabBar.topAnchor)!).isActive = true
         
         contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
         
         // We need to create a height constraint that we can use to modify the height of the pullup view. This is lower priority so that it can snap to the top of the view when we need to (letting go).
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
@@ -65,7 +74,6 @@ class PullupController: UIViewController {
         contentViewHeightConstraint.priority = 750
         contentViewHeightConstraint.isActive = true
         
-//        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: (self.tabBarController?.view.topAnchor)!)
         contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: self.view.topAnchor)
         contentViewTopConstraint.identifier = "contentViewTopConstraint"
         
@@ -143,14 +151,10 @@ class PullupController: UIViewController {
             // we need to provide access to this pullupController to child classes
             if let navController = pullupVC as? UINavigationController {
                 for viewController in navController.viewControllers {
-                    if let currentVC = viewController as? PullupControllerProtocol {
-                        currentVC.pullupController = self;
-                    }
+                    viewController.pullupController = self;
                 }
             } else {
-                if let currentVC = pullupVC as? PullupControllerProtocol {
-                    currentVC.pullupController = self;
-                }
+                pullupVC.pullupController = self;
             }
             
             updatePullupConstraints()
@@ -164,7 +168,7 @@ class PullupController: UIViewController {
             pullupVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             pullupVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
             pullupVC.view.topAnchor.constraint(equalTo: toolbarVC.view.bottomAnchor).isActive = true
-            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            pullupVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true            
         }
     }
     
@@ -181,10 +185,7 @@ class PullupController: UIViewController {
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
-                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
-//                self.view.layoutIfNeeded()
-                self.tabBarController?.view.layoutIfNeeded()
-
+                self.view.layoutIfNeeded()
             }
         } else {
             self.view.layoutIfNeeded()
@@ -196,9 +197,7 @@ class PullupController: UIViewController {
         
         if (flag) {
             UIView.animate(withDuration: 0.1) {
-                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height + (self.tabBarController?.tabBar.frame.height)!
-//                self.view.layoutIfNeeded()
-                self.tabBarController?.view.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
         } else {
              self.view.layoutIfNeeded()

@@ -26,7 +26,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixH-h2-VL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1418" y="-246"/>
+            <point key="canvasLocation" x="-1318" y="196"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="U5s-Hg-JpE">
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332" y="-617.54122938530736"/>
+            <point key="canvasLocation" x="-1319" y="-672"/>
         </scene>
         <!--Reservation Toolbar View Controller-->
         <scene sceneID="7df-W6-gyy">
@@ -536,7 +536,7 @@
             <objects>
                 <tableViewController id="nN6-Jn-AGk" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Zh-nh-XZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.51110669009999998" blue="0.41862930780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -746,6 +746,6 @@
         <image name="background" width="489" height="871"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AHq-0f-gmy"/>
+        <segue reference="GSf-I0-9XQ"/>
     </inferredMetricsTieBreakers>
 </document>

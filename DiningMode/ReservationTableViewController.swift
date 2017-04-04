@@ -14,8 +14,7 @@ enum ReservationCards:Int {
     case dishes
 }
 
-class ReservationTableViewController: UITableViewController, PullupControllerProtocol {
-    internal var pullupController: PullupController?
+class ReservationTableViewController: UITableViewController {
     
     private var viewModel: ReservationViewModel!
     private var cards: NSMutableOrderedSet = NSMutableOrderedSet()
