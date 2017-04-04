@@ -14,7 +14,7 @@ class MainPullupController: PullupController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.bottomAnchorConstantForPullupBar = -50
+//        self.bottomAnchorConstantForPullupBar = -50
     }
 
     override func didReceiveMemoryWarning() {

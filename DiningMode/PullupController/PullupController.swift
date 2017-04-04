@@ -35,7 +35,9 @@ class PullupController: UIViewController {
 //    open weak var delegate: PullupControllerDelegate?
     public var bottomAnchorConstantForPullupBar: CGFloat = 0 {
         didSet {
-            self.contentViewBottomConstraint.constant = self.bottomAnchorConstantForPullupBar
+            if let bottomConstraint = self.contentViewBottomConstraint {
+                bottomConstraint.constant = self.bottomAnchorConstantForPullupBar
+            }
         }
     }
     
@@ -69,6 +71,12 @@ class PullupController: UIViewController {
         
         self.contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        // Default to height of tabBar if one exist and the constant hasnt been set yet. Just a convenience for use with embeded tabControllers
+        if let tabBarController = self.childViewControllers.first as? UITabBarController, self.bottomAnchorConstantForPullupBar == 0 {
+            self.bottomAnchorConstantForPullupBar = -tabBarController.tabBar.frame.height
+        }
+        
         self.contentViewBottomConstraint = self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.bottomAnchorConstantForPullupBar)
         self.contentViewBottomConstraint.isActive = true
         
