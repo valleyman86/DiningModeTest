@@ -23,19 +23,21 @@ extension UIViewController {
     }
 }
 
-protocol PullupControllerDelegate : class {
-    var bottomAnchorConstantForPullupBar: Float? { get set }
-//    @objc optional func bottomAnchorConstantForPullupBar(_ pullupController: PullupController) -> NSLayoutYAxisAnchor
-}
-
-
 class PullupController: UIViewController {
 
     // MARK: - Properties
     private var contentView: UIView!
     private var contentViewHeightConstraint: NSLayoutConstraint!
     private var contentViewTopConstraint: NSLayoutConstraint!
+    private var contentViewBottomConstraint: NSLayoutConstraint!
 
+//    open weak var delegate: PullupControllerDelegate?
+    public var bottomAnchorConstantForPullupBar: CGFloat = 0 {
+        didSet {
+            contentViewBottomConstraint.constant = self.bottomAnchorConstantForPullupBar
+        }
+    }
+    
     public var toolbarViewController: UIViewController? {
         didSet {
             removeViewController(viewController: oldValue)
@@ -66,7 +68,8 @@ class PullupController: UIViewController {
         
         contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
+        contentViewBottomConstraint = contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.bottomAnchorConstantForPullupBar)
+        contentViewBottomConstraint.isActive = true
         
         // We need to create a height constraint that we can use to modify the height of the pullup view. This is lower priority so that it can snap to the top of the view when we need to (letting go).
         contentViewHeightConstraint = contentView.heightAnchor.constraint(equalToConstant: 0)
